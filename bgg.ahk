@@ -5,9 +5,18 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 2
 #SingleInstance Force
 
+notset = 1
 *f3::
 toggle := !toggle
 	if (toggle) {
+		if (notset == 1) {
+		InputBox, keyc, set up your controls!, Continue key?, , , , , , , , c
+		InputBox, keyh, set up your controls!, Heavy attack?, , , , , , , , l
+		InputBox, keyj, set up your controls!, Jump key?, , , , , , , , space
+		InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
+		InputBox, keyr, set up your controls!, Move Right?, , , , , , , , right
+		notset = 0
+		}
 		SetTimer Spam_Q, 3000
 	} else {
 		SetTimer Spam_Q, Off
@@ -19,29 +28,29 @@ toggle := !toggle
 Spam_Q:
 	wintitle = Brawlhalla
   IfWinExist %wintitle%:
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
 		Sleep 200
-		ControlSend, , {left down}, %wintitle%
+		ControlSend, , {%keyl% down}, %wintitle%
 		Sleep 500
-		ControlSend, , {l}, %wintitle%
+		ControlSend, , {%keyh%}, %wintitle%
 		Sleep 600
-		ControlSend, , {left up}, %wintitle%
-		ControlSend, , {space}, %wintitle%
-		ControlSend, , {l}, %wintitle%
+		ControlSend, , {%keyl% up}, %wintitle%
+		ControlSend, , {%keyj%}, %wintitle%
+		ControlSend, , {%keyh%}, %wintitle%
 		Sleep 200
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
+		ControlSend, , {%keyc%}, %wintitle%
 		Sleep 200
-	  ControlSend, , {right down}, %wintitle%
+	  ControlSend, , {%keyr% down}, %wintitle%
 		Sleep 500
-		ControlSend, , {l}, %wintitle%
+		ControlSend, , {%keyh%}, %wintitle%
 		Sleep 600
-		ControlSend, , {right up}, %wintitle%
-		ControlSend, , {space}, %wintitle%
-		ControlSend, , {l}, %wintitle%
+		ControlSend, , {%keyr% up}, %wintitle%
+		ControlSend, , {%keyj%}, %wintitle%
+		ControlSend, , {%keyh%}, %wintitle%
 		Sleep 200
 
 	return
