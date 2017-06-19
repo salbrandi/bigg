@@ -18,7 +18,7 @@ if (notset == 1) {
 	MsgBox, All controls set! Press f4 to reconfigure.
 }
 
-IfWinExist Brawlhalla {
+IfWinExist Brawlhalla
 	toggle := !toggle
 		if (toggle) {
 
@@ -26,7 +26,6 @@ IfWinExist Brawlhalla {
 		} else {
 			SetTimer Spam_Q, Off
 		}
-}
 return
 
 *f4::
@@ -41,7 +40,7 @@ return
 
 Spam_Q:
   wintitle = Brawlhalla
-  IfWinExist %wintitle% {
+  IfWinExist %wintitle%:
 	ControlSend, , {%keyc%}, %wintitle%
 	ControlSend, , {%keyc%}, %wintitle%
 	ControlSend, , {%keyc%}, %wintitle%
