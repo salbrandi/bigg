@@ -19,7 +19,7 @@ if (notset == 1) {
 	InputBox, keyj, set up your controls!, Jump key?, , , , , , , , space
 	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
 	InputBox, keyr, set up your controls!, Move Right?, , , , , , , , right
-	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , right
+	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
 	notset = 0
 	MsgBox, All controls set! Press f4 to reconfigure.
 }
@@ -27,12 +27,12 @@ if (notset == 1) {
 IfWinExist Brawlhalla
 	toggle := !toggle
 		if (toggle) {
+			SoundBeep, 323, 100
 			SoundBeep, , 100
-			SoundBeep, 750, 100
 			SetTimer Spam_Q, 3000
 		} else {
-			SoundBeep, 750, 100
 			SoundBeep, , 100
+			SoundBeep, 323, 100
 			SetTimer Spam_Q, Off
 		}
 return
@@ -43,7 +43,7 @@ return
 	InputBox, keyj, set up your controls!, Jump key?, , , , , , , , space
 	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
 	InputBox, keyr, set up your controls!, Move right?, , , , , , , , right
-	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , right
+	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
 	notset = 0
 	MsgBox, All controls set! Press f4 to reconfigure.
 return
