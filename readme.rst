@@ -1,7 +1,7 @@
 BIGG - Brawlhalla Inactive Gold Generator
 =========================================
 
-A script which continuously sends input to a lobby which ensures a gold generation of 10+-2/min 
+A script which continuously sends input to a lobby which ensures a gold generation of 10±2/min 
 
 Directions:
 +++++++++++
@@ -24,6 +24,7 @@ TO-DO:
 Change log:
 +++++++++++
 
-  * V0.0.1: Automated light attacks, jumps, and recoveries
-  * V0.0.2: Allowed users to input their own control scheme
-  * V0.0.3: Beeping noise for activation/deactivation, pickup added to general combo, more idiot proof
+  *         V0.0.1: Automated light attacks, jumps, and recoveries
+  *         V0.0.2: Allowed users to input their own control scheme
+  * Current V0.0.3: Beeping noise for activation/deactivation, pickup added to general combo, more idiot proof
+
