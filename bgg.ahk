@@ -5,10 +5,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 2
 #SingleInstance Force
 
-;; To do ;;
-; Create a function for control set up - cleaner code
-; Create a function for beeps - cleaner code
-;;;;;;;;;;;
 
 
 notset = 1
