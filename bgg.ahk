@@ -5,43 +5,72 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 2
 #SingleInstance Force
 
+
+
+notset = 1
 *f3::
-toggle := !toggle
-	if (toggle) {
-		SetTimer Spam_Q, 3000
-	} else {
-		SetTimer Spam_Q, Off
-	}
-  return
+if (notset == 1) {
+	InputBox, keyc, set up your controls!, Continue key?, , , , , , , , c
+	InputBox, keyh, set up your controls!, Heavy attack?, , , , , , , , l
+	InputBox, keyj, set up your controls!, Jump key?, , , , , , , , space
+	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
+	InputBox, keyr, set up your controls!, Move Right?, , , , , , , , right
+	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
+	notset = 0
+	MsgBox, All controls set! Press f4 to reconfigure.
+}
 
+IfWinExist Brawlhalla
+	toggle := !toggle
+		if (toggle) {
+			SoundBeep, 323, 100
+			SoundBeep, , 100
+			SetTimer Spam_Q, 3000
+		} else {
+			SoundBeep, , 100
+			SoundBeep, 323, 100
+			SetTimer Spam_Q, Off
+		}
+return
 
+*f4::
+	InputBox, keyc, set up your controls!, Continue key?, , , , , , , , c
+	InputBox, keyh, set up your controls!, Heavy attack?, , , , , , , , l
+	InputBox, keyj, set up your controls!, Jump key?, , , , , , , , space
+	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
+	InputBox, keyr, set up your controls!, Move right?, , , , , , , , right
+	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
+	notset = 0
+	MsgBox, All controls set! Press f4 to reconfigure.
+return
 
 Spam_Q:
-	wintitle = Brawlhalla
+  wintitle = Brawlhalla
   IfWinExist %wintitle%:
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		Sleep 200
-		ControlSend, , {left down}, %wintitle%
-		Sleep 500
-		ControlSend, , {l}, %wintitle%
-		Sleep 600
-		ControlSend, , {left up}, %wintitle%
-		ControlSend, , {space}, %wintitle%
-		ControlSend, , {l}, %wintitle%
-		Sleep 200
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		ControlSend, , {c}, %wintitle%
-		Sleep 200
-	  ControlSend, , {right down}, %wintitle%
-		Sleep 500
-		ControlSend, , {l}, %wintitle%
-		Sleep 600
-		ControlSend, , {right up}, %wintitle%
-		ControlSend, , {space}, %wintitle%
-		ControlSend, , {l}, %wintitle%
-		Sleep 200
-
-	return
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyp%}, %wintitle%
+	Sleep 200
+	ControlSend, , {%keyl% down}, %wintitle%
+	Sleep 500
+	ControlSend, , {%keyh%}, %wintitle%
+	Sleep 600
+	ControlSend, , {%keyl% up}, %wintitle%
+	ControlSend, , {%keyj%}, %wintitle%
+	ControlSend, , {%keyh%}, %wintitle%
+	Sleep 200
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyp%}, %wintitle%
+	Sleep 200
+  	ControlSend, , {%keyr% down}, %wintitle%
+	Sleep 500
+	ControlSend, , {%keyh%}, %wintitle%
+	Sleep 600
+	ControlSend, , {%keyr% up}, %wintitle%
+	ControlSend, , {%keyj%}, %wintitle%
+	ControlSend, , {%keyh%}, %wintitle%
+	Sleep 200
+  return
