@@ -67,7 +67,7 @@ Spam_Q:
 	Sleep 10
 	ControlSend, , {%keyc% up}, %wintitle%
 	Sleep 10
-	ControlSend, , {%keyp%}, %wintitle%
+	;ControlSend, , {%keyp%}, %wintitle%
 	Sleep 200
 	if (!notline) {
 		ControlSend, , {%keyl% down}, %wintitle%
@@ -93,7 +93,7 @@ Spam_Q:
 	Sleep 10
 	ControlSend, , {%keyc% up}, %wintitle%
 	Sleep 10
-	ControlSend, , {%keyp%}, %wintitle%
+	;ControlSend, , {%keyp%}, %wintitle%
 	Sleep 200
 	if (!notline) {
 		ControlSend, , {%keyr% down}, %wintitle%
