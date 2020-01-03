@@ -26,5 +26,5 @@ Change log:
 
   *         V0.0.1: Automated light attacks, jumps, and recoveries
   *         V0.0.2: Allowed users to input their own control scheme
-  * Current V0.0.3: Beeping noise for activation/deactivation, pickup added to general combo, more idiot proof
-
+  *         V0.0.3: Beeping noise for activation/deactivation, pickup added to general combo, more idiot proof
+  * Current V0.0.4: Added more functionality in the controls set up and flexibility
