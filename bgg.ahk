@@ -1,10 +1,14 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode, 2
 #SingleInstance Force
 
+;; To do ;;
+; Create a function for control set up - cleaner code
+; Create a function for beeps - cleaner code
+;;;;;;;;;;;
 
 
 notset = 1
@@ -16,6 +20,8 @@ if (notset == 1) {
 	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
 	InputBox, keyr, set up your controls!, Move Right?, , , , , , , , right
 	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
+	InputBox, notline, set up your controls!, One legend or the whole line? Enter 1 for one legend or 0 for the line., , , , , , , , 0
+	InputBox, notline, set up your controls!, One legend or the whole line? Enter 1 for one legend or 0 for the line., , , , , , , , Brawlhalla
 	notset = 0
 	MsgBox, All controls set! Press f4 to reconfigure.
 }
@@ -40,19 +46,32 @@ return
 	InputBox, keyl, set up your controls!, Move left?, , , , , , , , left
 	InputBox, keyr, set up your controls!, Move right?, , , , , , , , right
 	InputBox, keyp, set up your controls!, Pick up?, , , , , , , , i
+	InputBox, notline, set up your controls!, One legend or the whole line? Enter 1 for one legend or 0 for the line., , , , , , , , 0
+	InputBox, customwin, set up your controls!, Enter your Brawlhalla window title if it is not already "Brawlhalla", , , , , , , , Brawlhalla
 	notset = 0
 	MsgBox, All controls set! Press f4 to reconfigure.
 return
 
 Spam_Q:
-  wintitle = Brawlhalla
+  wintitle = %customwin%
   IfWinExist %wintitle%:
-	ControlSend, , {%keyc%}, %wintitle%
-	ControlSend, , {%keyc%}, %wintitle%
-	ControlSend, , {%keyc%}, %wintitle%
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
 	ControlSend, , {%keyp%}, %wintitle%
 	Sleep 200
-	ControlSend, , {%keyl% down}, %wintitle%
+	if (!notline) {
+		ControlSend, , {%keyl% down}, %wintitle%
+	}
 	Sleep 500
 	ControlSend, , {%keyh%}, %wintitle%
 	Sleep 600
@@ -60,12 +79,25 @@ Spam_Q:
 	ControlSend, , {%keyj%}, %wintitle%
 	ControlSend, , {%keyh%}, %wintitle%
 	Sleep 200
-	ControlSend, , {%keyc%}, %wintitle%
-	ControlSend, , {%keyc%}, %wintitle%
-	ControlSend, , {%keyc%}, %wintitle%
+	if (!notline) {
+		ControlSend, , {%keyc% down}, %wintitle%
+	}
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 10
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 10
 	ControlSend, , {%keyp%}, %wintitle%
 	Sleep 200
-  	ControlSend, , {%keyr% down}, %wintitle%
+	if (!notline) {
+		ControlSend, , {%keyr% down}, %wintitle%
+	}
 	Sleep 500
 	ControlSend, , {%keyh%}, %wintitle%
 	Sleep 600
@@ -73,4 +105,16 @@ Spam_Q:
 	ControlSend, , {%keyj%}, %wintitle%
 	ControlSend, , {%keyh%}, %wintitle%
 	Sleep 200
+  return
+  
+Spam_C:
+  wintitle = Brawlhalla
+  IfWinExist %wintitle%:
+	ControlSend, ahk_parent, {%keyc%}, %wintitle%
+	ControlSend, ahk_parent, {%keyc%}, %wintitle%
+	ControlSend, ahk_parent, {%keyc%}, %wintitle%
+	ControlSend, , {%keyc% down}, %wintitle%
+	Sleep 100
+	ControlSend, , {%keyc% up}, %wintitle%
+	Sleep 100
   return
